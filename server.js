@@ -56,7 +56,7 @@ app.post('/save-token', (req, res) => {
   }
 });
 app.post('/send-notification', async (req, res) => {
-  
+
   const message = {
       data: {
         score: 'testing',
@@ -66,7 +66,7 @@ app.post('/send-notification', async (req, res) => {
     };
 
     try {
-      const response = await admin.messaging().sendMulticast(message);
+      const response = await admin.messaging().sendEachForMulticast(message);
       console.log('Notification sent successfully:', response);
       res.status(200).send('Notification sent successfully');
     } catch (error) {
