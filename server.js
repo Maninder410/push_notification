@@ -44,6 +44,17 @@ const io = socketIo(server, {
 app.get('/', (req, res) => {
   res.send('<h1>notification added</h1>');
 });
+app.post('/save-token', (req, res) => {
+  const { token } = req.body;
+
+  if (token && !registrationTokens.includes(token)) {
+    registrationTokens.push(token);
+    console.log('Token saved:', token);
+    res.status(200).send('Token saved successfully');
+  } else {
+    res.status(400).send('Invalid token or token already exists');
+  }
+});
 app.post('/send-notification', async (req, res) => {
   const message = {
       data: {
