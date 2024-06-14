@@ -5,6 +5,7 @@ const socketIo = require('socket.io');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config(); 
+app.use(cors({ origin: '*' }));
 
 const serviceAccount = {
     "type": "service_account",
@@ -25,7 +26,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount), // replace with your service account credentials
 });
 const app = express();
-app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 const rooms = {};
 const meetingLogs = {};
@@ -56,7 +56,7 @@ app.post('/save-token', (req, res) => {
   }
 });
 app.post('/send-notification', async (req, res) => {
-print(registrationTokens);
+console.log(registrationTokens);
   const message = {
       data: {
         score: 'testing',
@@ -64,7 +64,7 @@ print(registrationTokens);
       },
       token: registrationTokens
     };
-
+console.log("reached till here but below may be problamtic");
     try {
       const response = await admin.messaging().sendEachForMulticast(message);
       console.log('Notification sent successfully:', response);
