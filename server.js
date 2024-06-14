@@ -63,7 +63,7 @@ console.log(registrationTokens);
         score: 'testing',
         time: 'work'
       },
-      token: registrationTokens
+      tokens: registrationTokens
     };
 console.log("reached till here but below may be problamtic");
     try {
