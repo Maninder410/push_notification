@@ -56,7 +56,7 @@ app.post('/save-token', (req, res) => {
   }
 });
 app.post('/send-notification', async (req, res) => {
-
+print(registrationTokens);
   const message = {
       data: {
         score: 'testing',
