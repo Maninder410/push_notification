@@ -5,8 +5,10 @@ const socketIo = require('socket.io');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config(); 
+const app = express();
 app.use(cors({ origin: '*' }));
 
+app.use(bodyParser.json());
 const serviceAccount = {
     "type": "service_account",
     "project_id": process.env.GOOGLE_PROJECT_ID,
@@ -25,8 +27,7 @@ let registrationTokens = [];
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount), // replace with your service account credentials
 });
-const app = express();
-app.use(bodyParser.json());
+
 const rooms = {};
 const meetingLogs = {};
 // Route to store roomName and sid
