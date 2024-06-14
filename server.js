@@ -1,10 +1,10 @@
 const express = require('express');
-const http = require('http');
 const admin = require('firebase-admin');
+const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-require('dotenv').config(); // This loads environment variables from .env file into process.env
+require('dotenv').config(); 
 
 const serviceAccount = {
     "type": "service_account",
