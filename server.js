@@ -57,15 +57,15 @@ app.post('/save-token', (req, res) => {
   }
 });
 app.post('/send-notification', async (req, res) => {
-console.log(registrationTokens);
+  const { roomId, username} = req.body;
   const message = {
-      data: {
-        score: 'testing',
-        time: 'work'
-      },
+    data: {
+      roomId: roomId,
+      username: username,
+    },
       tokens: registrationTokens
     };
-console.log("reached till here but below may be problamtic");
+
     try {
       const response = await admin.messaging().sendEachForMulticast(message);
       console.log('Notification sent successfully:', response);
